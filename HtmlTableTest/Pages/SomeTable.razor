@@ -1,0 +1,47 @@
+﻿<h3>SomeTable</h3>
+
+<table id="theTable">
+    <thead>
+    <tr>
+        <th># Ref</th>
+        <th>Compagnie</th>
+        <th># Produit</th>
+        <th>Date comptable</th>
+        <th>Compte</th>
+        <th>Débit</th>
+        <th>Crédit</th>
+        <th>Type</th>
+        <th>Description</th>
+        <th>Date de création</th>
+        <th></th>
+        <th></th>
+    </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Data)
+        {
+            <tr>
+            <td>@item.Ref</td>
+            <td>@item.Compagnie</td>
+            <td>@item.Produit</td>
+            <td>@item.DateComptable.ToString("yyyy-MM-dd")</td>
+            <td>@item.Compte</td>
+            <td>@item.Debit.ToString("0.00")</td>
+            <td>@item.Credit.ToString("0.00")</td>
+            <td>@item.Type</td>
+            <td>@item.Description</td>
+            <td>@item.DateCreation</td>
+            <td><a href="/edit/@item.Id" type="button" class="btn btn-sm btn-primary"><i class="bi bi-pen"></i></a></td>
+            <td><a href="/delete/@item.Id" type="button" class="btn btn-sm btn-danger"><i class="bi bi-trash"></i></a></td>
+            </tr>
+        }
+        </tbody>
+</table>
+
+@code {
+
+    [Parameter] public SomeData[] Data { get; set; } = [];
+    
+    public record SomeData(int Id, string Ref, string Compagnie, string Produit, DateOnly DateComptable, string Compte, double Debit, double Credit, string Type, string Description, DateOnly DateCreation);
+
+}

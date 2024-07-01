@@ -1,0 +1,6 @@
+@HtmlTableTest_HostAddress = http://localhost:5137
+
+GET {{HtmlTableTest_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
